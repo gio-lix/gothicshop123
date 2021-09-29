@@ -3,9 +3,12 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {StoreContext} from "@/context/createStore";
 import NavbarList from "@/components/navbarMenuList/NavbarList";
 import {useRouter} from "next/router";
-import Image from "next/image";
+import useTranslation from "next-translate/useTranslation";
+
 
 export default function Header() {
+
+    let {t} = useTranslation()
     const {user, logout} = useContext(StoreContext)
     const router = useRouter()
 
@@ -69,7 +72,7 @@ export default function Header() {
                     <ul className=' w-full flex items-center justify-between   '>
                         <li>
                             <Link href='/'>
-                                <a>join us</a>
+                                <a>{t('header:join')}</a>
                             </Link>
                         </li>
                         <li>
@@ -99,7 +102,22 @@ export default function Header() {
                                 LN
                             </button>
                             {/*change language*/}
-
+                            <div
+                                className='absolute mt-2 z-175'>
+                                {language && (
+                                    <div className='flex flex-col' >
+                                        {router.locales.map(locale => (
+                                            <Link href={router.asPath} locale={locale} key={locale} >
+                                                <a  onClick={() => setLanguage(false) }
+                                                    className='bg-black p-0.5 sm:p-1.5 border border-gray-500'
+                                                >
+                                                    {locale}
+                                                </a>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                         {!user ? (
                             <>

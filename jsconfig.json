@@ -5,7 +5,8 @@
       "@/components/*": ["components/*"],
       "@/context/*": ["context/*"],
       "@/config/*": ["config/*"],
-      "@/helper/*": ["helper/*"]
+      "@/helper/*": ["helper/*"],
+      "@/locales/*": ["locales/*"]
     }
   }
 }
