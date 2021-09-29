@@ -3,10 +3,8 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {StoreContext} from "@/context/createStore";
 import NavbarList from "@/components/navbarMenuList/NavbarList";
 import {useRouter} from "next/router";
-import useTranslation from "next-translate/useTranslation";
 
 export default function Header() {
-    let {t} = useTranslation()
     const {user, logout} = useContext(StoreContext)
     const router = useRouter()
 
@@ -70,7 +68,7 @@ export default function Header() {
                     <ul className=' w-full flex items-center justify-between   '>
                         <li>
                             <Link href='/'>
-                                <a>{t('header:join')}</a>
+                                <a>join us</a>
                             </Link>
                         </li>
                         <li>
@@ -89,32 +87,6 @@ export default function Header() {
                                 )}
                             </div>
                         </li>
-                        {/*<div ref={loginRef}>*/}
-                        {/*    <div*/}
-                        {/*        onClick={loginPopUpInput}*/}
-                        {/*        className='hidden sm:block mr-4 sm:mr-8 cursor-pointer'>*/}
-                        {/*        {user ? (*/}
-                        {/*            <img src="/user.svg" alt="user"/>*/}
-                        {/*        ) : (*/}
-                        {/*            <img src="/ghost.svg" alt="ghost"/>*/}
-                        {/*        )}*/}
-
-                        {/*    </div>*/}
-                        {/*    <div>*/}
-                        {/*        {!(loginPageStyles || registerPageStyles ) && (*/}
-                        {/*            <>*/}
-                        {/*                {loginPopUp && (*/}
-                        {/*                    <div*/}
-                        {/*                        className=' w-64 h-lh pt-7 right-10 absolute z-50 p-2 '*/}
-                        {/*                        style={{backgroundImage: "url('/bg.png')"}}>*/}
-                        {/*                        /!*<LoginPopUp setLoginPopUp={setLoginPopUp}/>*!/*/}
-                        {/*                    </div>*/}
-
-                        {/*                )}*/}
-                        {/*            </>*/}
-                        {/*        )}*/}
-                        {/*    </div>*/}
-                        {/*</div>*/}
                         <div
                             ref={useLanguageRef}
                             className='mr-4 sm:mr-8 sm:text-xs relative  '
@@ -126,22 +98,6 @@ export default function Header() {
                                 LN
                             </button>
                             {/*change language*/}
-                            <div
-                                className='absolute mt-2 z-175'>
-                                {language && (
-                                    <div className='flex flex-col' >
-                                        {router.locales.map(locale => (
-                                            <Link href={router.asPath} locale={locale} key={locale} >
-                                                <a  onClick={() => setLanguage(false) }
-                                                    className='bg-black p-0.5 sm:p-1.5 border border-gray-500'
-                                                >
-                                                    {locale}
-                                                </a>
-                                            </Link>
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
 
                         </div>
                         {!user ? (

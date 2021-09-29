@@ -10,6 +10,7 @@ import BuyButton from "@/components/BuyButton";
 export default function ClothesSlug({data}) {
 
     const router = useRouter()
+
     const activeSizes = data.size.map(el => checkIndexSize(el))
     const size = ['XS', 'L', 'S', 'XL', 'M', 'XXL']
     const [activeType, setActiveType] = useState(activeSizes[0])
