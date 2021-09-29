@@ -3,14 +3,17 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {StoreContext} from "@/context/createStore";
 import NavbarList from "@/components/navbarMenuList/NavbarList";
 import {useRouter} from "next/router";
+import useTranslation from "next-translate/useTranslation";
 
 export default function Header() {
+    let {t} = useTranslation()
     const {user, logout} = useContext(StoreContext)
     const router = useRouter()
 
     const [loginPopUp, setLoginPopUp] = useState(false)
     const [searchResult, setSearchResult] = useState('')
     const [searchToggle, setSearchToggle] = useState(false)
+    const [language, setLanguage] = useState(false)
 
     const loginPageStyles = router.pathname === '/account/login'
     const homeStyle = router.pathname === '/'
@@ -20,6 +23,7 @@ export default function Header() {
     const clearRef = useRef()
     const loginRef = useRef()
     const searchRef = useRef('')
+    const useLanguageRef = useRef()
 
     useEffect(() => {
         if (searchRef.current) searchRef.current.focus()
@@ -38,9 +42,20 @@ export default function Header() {
         if (!e.path.includes(loginRef.current)) setLoginPopUp(false)
     }
 
+    useEffect(() => {
+        document.body.addEventListener('click', handleLanguage)
+        return () => document.body.removeEventListener('click', handleLanguage)
+    },[])
+    const handleLanguage = (e) => {
+        if (!e.path.includes(useLanguageRef.current)) {
+            setLanguage(false)
+        }
+    }
+
 
     const handleOpen = () => setSearchToggle(!searchToggle)
     const loginPopUpInput = () => setLoginPopUp(!loginPopUp)
+    const handleChangeLanguage = () => setLanguage(!language)
 
 
     const handleSearch = (e) => {
@@ -55,7 +70,7 @@ export default function Header() {
                     <ul className=' w-full flex items-center justify-between   '>
                         <li>
                             <Link href='/'>
-                                <a>Join us</a>
+                                <a>{t('header:join')}</a>
                             </Link>
                         </li>
                         <li>
@@ -100,6 +115,35 @@ export default function Header() {
                         {/*        )}*/}
                         {/*    </div>*/}
                         {/*</div>*/}
+                        <div
+                            ref={useLanguageRef}
+                            className='mr-4 sm:mr-8 sm:text-xs relative  '
+                        >
+                            <button onClick={handleChangeLanguage}
+                                    className='p-0.5 sm:p-1.5 bg-black border border-gray-500'
+                            >
+                                {/*<img src="/Ellipse 13.svg" alt="ellipse " className='h-6 sm:h-7'/>*/}
+                                LN
+                            </button>
+                            {/*change language*/}
+                            <div
+                                className='absolute mt-2 z-175'>
+                                {language && (
+                                    <div className='flex flex-col' >
+                                        {router.locales.map(locale => (
+                                            <Link href={router.asPath} locale={locale} key={locale} >
+                                                <a  onClick={() => setLanguage(false) }
+                                                    className='bg-black p-0.5 sm:p-1.5 border border-gray-500'
+                                                >
+                                                    {locale}
+                                                </a>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+
+                        </div>
                         {!user ? (
                             <>
                                 <li>
