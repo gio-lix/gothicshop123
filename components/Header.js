@@ -3,6 +3,7 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {StoreContext} from "@/context/createStore";
 import NavbarList from "@/components/navbarMenuList/NavbarList";
 import {useRouter} from "next/router";
+import Image from "next/image";
 
 export default function Header() {
     const {user, logout} = useContext(StoreContext)

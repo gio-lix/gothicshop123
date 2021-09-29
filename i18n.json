@@ -1,0 +1,7 @@
+{
+  "locales": ["EN", "GE"],
+  "defaultLocale": "EN",
+  "pages": {
+    "*": ["header"]
+  }
+}
