@@ -1,3 +1,9 @@
 {
-  "join": "Join us"
+  "clothes": "clothes",
+  "shoes": "shoes",
+  "accessories": "Accessories",
+  "sale": "sale",
+  "blog": "blog",
+  "join": "Join us",
+  "about": "about us"
 }

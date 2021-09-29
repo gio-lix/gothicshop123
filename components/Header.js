@@ -67,17 +67,17 @@ export default function Header() {
     return (
         <div className=' h-20 sm:h-44 bg-gradient-to-t from-header via-black to-black px-2 sm:px-20  lg:px-36  flex flex-col justify-around'>
             <div className='flex flex-row  justify-between '>
-                <img src="/Gloomy-store.svg" alt="gloomy" className='h-8 sm:h-12'/>
-                <nav className='flex h-full items-end w-2/5  '>
-                    <ul className=' w-full flex items-center justify-between   '>
+                <img src="/Gloomy-store.svg" alt="gloomy" className='h-8 sm:h-9 lg:h-12'/>
+                <nav className='flex justify-end  items-end   '>
+                    <ul className=' w-full flex items-center   '>
                         <li>
                             <Link href='/'>
-                                <a>{t('header:join')}</a>
+                                <a className='mr-4 sm:mr-8'>{t('header:join')}</a>
                             </Link>
                         </li>
                         <li>
                             <div className=' relative   hidden  sm:block  '>
-                                <div onClick={handleOpen} className='cursor-pointer flex'>
+                                <div onClick={handleOpen} className='cursor-pointer flex mr-4 sm:mr-8'>
                                     <img ref={clearRef} src="/loupe.svg" alt="loupe"/>
                                 </div>
                                 {searchToggle && (
@@ -103,7 +103,7 @@ export default function Header() {
                             </button>
                             {/*change language*/}
                             <div
-                                className='absolute mt-2 z-175'>
+                                className='absolute mt-2 z-50'>
                                 {language && (
                                     <div className='flex flex-col' >
                                         {router.locales.map(locale => (
@@ -135,7 +135,7 @@ export default function Header() {
                             <>
 
                                 <li>
-                                    <button onClick={() => logout()}>logout</button>
+                                    <button onClick={() => logout()} className='mr-4 sm:mr-8'>logout</button>
                                 </li>
                                 <li>
                                     <Link href=''>

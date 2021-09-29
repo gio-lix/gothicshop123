@@ -1,37 +1,39 @@
 import Link from "next/link";
+import useTranslation from "next-translate/useTranslation";
 
 export default function NavbarList() {
+    let {t} = useTranslation()
     return (
-        <nav className='flex hidden sm:inline-flex '>
-            <ul className='flex justify-between w-3/4 '>
+        <nav className='flex hidden sm:inline-flex overscroll-y-auto '>
+            <ul className='flex justify-between sm:w-4/5 lg:w-3/4 '>
                 <li>
                     <Link href='/clothes'>
-                        <a className='text-sm font-semibold tracking-wider'>Clothes</a>
+                        <a className='text-sm font-semibold tracking-wider mr-2'>{t('header:clothes')}</a>
                     </Link>
                 </li>
                 <li>
                     <Link href='/shoes'>
-                        <a className='text-sm font-semibold tracking-wider'>Shoes</a>
+                        <a className='text-sm font-semibold tracking-wider mr-2'>{t('header:shoes')}</a>
                     </Link>
                 </li>
                 <li>
                     <Link href='/accessories'>
-                        <a className='text-sm font-semibold tracking-wider'>Accessories</a>
+                        <a className='text-sm font-semibold tracking-wider mr-2'>{t('header:accessories')}</a>
                     </Link>
                 </li>
                 <li>
                     <Link href='/'>
-                        <a className='text-sm font-semibold tracking-wider'>Sale</a>
+                        <a className='text-sm font-semibold tracking-wider mr-2'>{t('header:sale')}</a>
                     </Link>
                 </li>
                 <li>
                     <Link href='/'>
-                        <a className='text-sm font-semibold tracking-wider'>Blog</a>
+                        <a className='text-sm font-semibold tracking-wider'>{t('header:blog')}</a>
                     </Link>
                 </li>
                 <li>
                     <Link href='/about'>
-                        <a className='text-sm font-semibold tracking-wider'>About us</a>
+                        <a className='text-sm font-semibold tracking-wider'>{t('header:about')}</a>
                     </Link>
                 </li>
 
