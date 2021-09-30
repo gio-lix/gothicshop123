@@ -40,3 +40,35 @@ export const checkIndexType = (num) => {
             return 'XXL'
     }
 }
+export  function translateCl(item) {
+    switch (item) {
+        case 'მაისურები':
+            return 't-shirts'
+        case 'კაპიუშონი':
+            return 'hoodies-cardigans'
+        case 'შარვარი-შორტები':
+            return 'trousers-shorts'
+        case 'ქურთუკები':
+            return 'coats-jackets'
+        case 'კაბები':
+            return 'dresses-skirts'
+        default:
+            return item
+    }
+}
+export  function translateSho(item) {
+    switch (item) {
+        case 'ფეხსაცმელი':
+            return 'boots'
+        case 'კრიპერი':
+            return 'creepers'
+        case 'სანდალი':
+            return 'sandals'
+        case 'სნიკერსი':
+            return 'sneakers'
+        case 'ქუსლიანი':
+            return 'heels'
+        default:
+            return item
+    }
+}

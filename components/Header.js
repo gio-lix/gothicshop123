@@ -55,6 +55,11 @@ export default function Header() {
             setLanguage(false)
         }
     }
+    const handleSearch = (e) => {
+        e.preventDefault()
+        router.push(`/search/search?term=${searchResult}`)
+        setSearchToggle(false)
+    }
 
 
     const handleOpen = () => setSearchToggle(!searchToggle)
@@ -62,16 +67,14 @@ export default function Header() {
     const handleChangeLanguage = () => setLanguage(!language)
 
 
-    const handleSearch = (e) => {
-        e.preventDefault()
-    }
+
 
     return (
         <div className={` h-20 sm:h-44 
           ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) ? 'via-black to-black flex flex-col justify-between ' : 'flex flex-col justify-around  px-2 sm:px-20  lg:px-36 bg-gradient-to-t from-header via-black to-black  px-2 sm:px-20  lg:px-36'}`}
         >
             <div className={`flex flex-row  justify-between ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) && 'px-2 sm:px-20  lg:px-36 pt-tp' } `}>
-                <img src="/Gloomy-store.svg" alt="gloomy" className='h-8 sm:h-9 lg:h-12'/>
+                <img onClick={() => router.push('/')} src="/Gloomy-store.svg" alt="gloomy" className='h-8 sm:h-9 lg:h-12 cursor-pointer'/>
                 <nav className='flex justify-end  items-end   '>
                     <ul className=' w-full flex items-center   '>
                         <li>
@@ -85,7 +88,7 @@ export default function Header() {
                                     <img ref={clearRef} src="/loupe.svg" alt="loupe"/>
                                 </div>
                                 {searchToggle && (
-                                    <div className=' sm:w-44 lg:w-52 h-8 absolute z-40 top-0 right-9  bg-indigo-700'>
+                                    <div className=' sm:w-44 lg:w-52 h-8 absolute z-40 top-0 right-7 bg-indigo-700'>
                                         <form onSubmit={handleSearch} className='h-full'>
                                             <input ref={searchRef} type="text "
                                                    onChange={(e) => setSearchResult(e.target.value)}
@@ -106,7 +109,6 @@ export default function Header() {
                                 {/*<img src="/Ellipse 13.svg" alt="ellipse " className='h-6 sm:h-7'/>*/}
                                 LN
                             </button>
-                            {/*change language*/}
                             <div
                                 className='absolute mt-2 z-50'>
                                 {language && (
