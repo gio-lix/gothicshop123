@@ -16,10 +16,21 @@ module.exports = {
       'childrenColor': '#161417',
       'payButton': '#707070'
     }),
-    extend: {},
+    extend: {
+      height: {
+        sm: '0.188rem',
+        ss: '1.063rem',
+        fh: '28.125rem',
+        lh: '18.75rem',
+        ic: '34.125rem',
+        ib: '38.125rem',
+        ih: '48.125rem'
+      },
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [require('tailwind-scrollbar-hide')],
 }

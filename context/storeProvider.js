@@ -3,11 +3,13 @@ import axios from "axios";
 import {NEXT_API} from "@/config/index";
 import {useEffect, useState} from "react";
 import {useRouter} from "next/router";
+import {useErrorHook} from "@/customHook/useErrorHook";
 
 
 export default function StoreProvider({children}) {
     const [user, setUser] = useState(null)
     const [filterOrderData, setFilterOrderData] = useState([])
+    const [error, setError] = useErrorHook()
 
     const router = useRouter()
 
@@ -68,7 +70,9 @@ export default function StoreProvider({children}) {
             getOrders,
             filterOrderData,
             setFilterOrderData,
-            getToken
+            getToken,
+            error,
+            setError
         }}>
             {children}
         </StoreContext.Provider>

@@ -4,12 +4,13 @@ import {StoreContext} from "@/context/createStore";
 import NavbarList from "@/components/navbarMenuList/NavbarList";
 import {useRouter} from "next/router";
 import useTranslation from "next-translate/useTranslation";
+import LoginPopUp from "@/components/loginPopUp/LoginPopUp";
 
 
 export default function Header() {
 
     let {t} = useTranslation()
-    const {user, logout} = useContext(StoreContext)
+    const {user, logout ,error, setError} = useContext(StoreContext)
     const router = useRouter()
 
     const [loginPopUp, setLoginPopUp] = useState(false)
@@ -91,6 +92,7 @@ export default function Header() {
                                 )}
                             </div>
                         </li>
+                        {/*change language*/}
                         <div
                             ref={useLanguageRef}
                             className='mr-4 sm:mr-8 sm:text-xs relative  '
@@ -119,35 +121,61 @@ export default function Header() {
                                 )}
                             </div>
                         </div>
-                        {!user ? (
-                            <>
-                                <li>
-                                    <Link href='/account/login'>
-                                        <a>
-                                            <img src="ghost.svg" alt="ghost"/>
-                                        </a>
-                                    </Link>
-                                </li>
+                        {/*login*/}
+                        <div ref={loginRef}>
+                            <div
+                                onClick={loginPopUpInput}
+                                className='hidden sm:block mr-4 sm:mr-8 cursor-pointer'>
+                                {user ? (
+                                    <img src="/user.svg" alt="user"/>
+                                ) : (
+                                    <img src="/ghost.svg" alt="ghost"/>
+                                )}
 
-                            </>
+                            </div>
+                            <div>
+                                {!(loginPageStyles || registerPageStyles ) && (
+                                    <>
+                                        {loginPopUp && (
+                                            <div
+                                                className=' w-64 h-lh pt-7 right-10 absolute z-50 p-2 '
+                                                style={{backgroundImage: "url('/bg.png')"}}>
+                                                <LoginPopUp setLoginPopUp={setLoginPopUp}/>
+                                            </div>
 
-                        ) : (
-                            <>
+                                        )}
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                        {/*{!user ? (*/}
+                        {/*    <>*/}
+                        {/*        <li>*/}
+                        {/*            <Link href='/account/login'>*/}
+                        {/*                <a>*/}
+                        {/*                    <img src="ghost.svg" alt="ghost"/>*/}
+                        {/*                </a>*/}
+                        {/*            </Link>*/}
+                        {/*        </li>*/}
 
-                                <li>
-                                    <button onClick={() => logout()} className='mr-4 sm:mr-8'>logout</button>
-                                </li>
-                                <li>
-                                    <Link href=''>
-                                        <a>
-                                            <img src="/Path.svg" alt="Path"/>
-                                        </a>
-                                    </Link>
-                                </li>
-                            </>
+                        {/*    </>*/}
 
-                        )}
+                        {/*) : (*/}
+                        {/*    <>*/}
 
+                        {/*        <li>*/}
+                        {/*            <button onClick={() => logout()} className='mr-4 sm:mr-8'>logout</button>*/}
+                        {/*        </li>*/}
+                        {/*        <li>*/}
+                        {/*            <Link href=''>*/}
+                        {/*                <a>*/}
+                        {/*                    <img src="/Path.svg" alt="Path"/>*/}
+                        {/*                </a>*/}
+                        {/*            </Link>*/}
+                        {/*        </li>*/}
+                        {/*    </>*/}
+
+                        {/*)}*/}
                     </ul>
                 </nav>
             </div>

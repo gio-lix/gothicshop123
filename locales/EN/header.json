@@ -5,5 +5,21 @@
   "sale": "sale",
   "blog": "blog",
   "join": "Join us",
-  "about": "about us"
+  "about": "about us",
+
+
+
+  "logout": "logout",
+  "login": "Login",
+
+  "openCart": "Open chart",
+  "deleteAll": "Delete all",
+
+  "email": "Email",
+  "password": "Password",
+  "forgetPassword": "Forget password ?",
+  "signIn": "Sign in",
+  "signUp": "Sign up",
+  "guest": "Continue as a guest",
+  "note": "Note! As guest you won't be able to track your order."
 }

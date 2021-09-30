@@ -6,7 +6,8 @@
       "@/context/*": ["context/*"],
       "@/config/*": ["config/*"],
       "@/helper/*": ["helper/*"],
-      "@/locales/*": ["locales/*"]
+      "@/locales/*": ["locales/*"],
+      "@/customHook/*": ["customHook/*"]
     }
   }
 }
