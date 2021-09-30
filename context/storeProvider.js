@@ -1,17 +1,39 @@
 import {StoreContext} from "./createStore";
 import axios from "axios";
 import {NEXT_API} from "@/config/index";
-import {useEffect, useState} from "react";
+import {useEffect, useReducer, useState} from "react";
 import {useRouter} from "next/router";
 import {useErrorHook} from "@/customHook/useErrorHook";
+import {reducerState} from "@/context/reducerState";
 
+
+const initialState = {
+    allCart: {
+        color: {},
+        size: {},
+        brand: {},
+        minPrice: {},
+        maxPrice: {}
+    },
+}
 
 export default function StoreProvider({children}) {
+
+    const [state, dispatch] = useReducer(reducerState, initialState)
     const [user, setUser] = useState(null)
     const [filterOrderData, setFilterOrderData] = useState([])
-    const [error, setError] = useErrorHook()
+    const [infoText , setInfoText] = useState('')
 
+    const [error, setError] = useErrorHook()
     const router = useRouter()
+
+    useEffect(() => {
+        const time = setTimeout(() => {
+            setInfoText('')
+        }, 2500)
+        return () => clearTimeout(time)
+    }, [infoText])
+
 
 
 
@@ -84,7 +106,9 @@ export default function StoreProvider({children}) {
             setFilterOrderData,
             getToken,
             error,
-            setError
+            setError,
+            state,
+            dispatch
         }}>
             {children}
         </StoreContext.Provider>
