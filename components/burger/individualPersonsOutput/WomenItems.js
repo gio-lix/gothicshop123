@@ -6,7 +6,7 @@ export default function WomenItems({items, setBurgerClick}) {
     const router = useRouter()
 
     const handleClick = (item) => {
-        // router.push(`/category/clothes/clothesWomenCategory/${item.replace('/', '-').toLowerCase().toString()}`)
+        router.push(`/category/clothes/clothesWomenCategory/${item.replace('/', '-').toLowerCase().toString()}`)
         setBurgerClick(false)
 
     }
