@@ -28,6 +28,17 @@ export default function StoreProvider({children}) {
 
     }
 
+    const register = async ({username, email, password}) => {
+        try {
+            const {data: {user}} = await axios.post(`${NEXT_API}/api/register`, {username, email, password})
+            setUser(user)
+            router.push('/')
+        } catch (err) {
+            setError(err.response.data.message)
+
+        }
+    }
+
     const checkUser = async () => {
         try {
             const {data: {user}} = await axios.get(`${NEXT_API}/api/user`)
@@ -68,6 +79,7 @@ export default function StoreProvider({children}) {
             login,
             logout,
             getOrders,
+            register,
             filterOrderData,
             setFilterOrderData,
             getToken,
