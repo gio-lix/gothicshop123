@@ -4,10 +4,60 @@
   "accessories": "Accessories",
   "sale": "sale",
   "blog": "blog",
-  "join": "Join us",
   "about": "about us",
 
+  "sort": "Sort by",
+  "subCategory": "subCategory",
 
+  "byPrice": "By price",
+  "byColor": "By color",
+  "bySize": "By size",
+  "byBrand": "By Brand",
+
+  "color": "Color",
+  "price": "Price",
+  "addPrice": "Add price",
+  "size": "Size",
+
+  "red": "red",
+  "black": "black",
+  "pink": "pink",
+  "mix": "mix",
+  "yellow": "yellow",
+  "white": "white",
+
+
+  "MinPrice": "Min price",
+  "MaxPrice": "Max price",
+  "submit": "submit",
+  "priceRange": "Price range",
+
+  "from": "from",
+  "to": "to",
+
+  "filter": "filter",
+  "cancel": "cancel",
+
+
+  "join": "Join us!",
+
+  "men": "men",
+  "women": "women",
+
+  "shirt": "t-shirts",
+  "hoodies": "hoodies/cardigans",
+  "trousers": "trousers/shorts",
+  "coats": "coats/jackets",
+  "dresses": "dresses/skirts",
+
+  "boots": "boots",
+  "creepers": "creepers",
+  "sandals": "sandals",
+  "sneakers": "sneakers",
+  "heels": "heels",
+
+  "notFound": "sorry there no ",
+  "yet": " yet",
 
   "logout": "logout",
   "login": "Login",
@@ -22,4 +72,6 @@
   "signUp": "Sign up",
   "guest": "Continue as a guest",
   "note": "Note! As guest you won't be able to track your order."
+
+
 }

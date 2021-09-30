@@ -72,3 +72,19 @@ export  function translateSho(item) {
             return item
     }
 }
+export  const checkItemLang = (el) => {
+    if (el === 'წითელი' || el === 'red' ) {
+        return 'red'
+    } else if (el === 'შავი' || el === 'black' ) {
+        return 'black'
+    }  else if (el === 'ვარდისფერი' || el === 'pink' ) {
+        return 'pink'
+    } else if (el === 'შერეული' || el === 'mix' ) {
+        return 'mix'
+    } else if (el === 'ყვითელი' || el === 'yellow' ) {
+        return 'yellow'
+    } else if (el === 'თეთრი' || el === 'white' ) {
+        return 'white'
+    }
+
+}

@@ -5,6 +5,8 @@ import NavbarList from "@/components/navbarMenuList/NavbarList";
 import {useRouter} from "next/router";
 import useTranslation from "next-translate/useTranslation";
 import LoginPopUp from "@/components/loginPopUp/LoginPopUp";
+import BurgerMenu from "@/components/burger/BurgerMenu";
+import useWindowWidth from "@/customHook/useWindowWidth";
 
 
 export default function Header() {
@@ -28,6 +30,9 @@ export default function Header() {
     const loginRef = useRef()
     const searchRef = useRef('')
     const useLanguageRef = useRef()
+
+
+    const {width, height} = useWindowWidth()
 
     useEffect(() => {
         if (searchRef.current) searchRef.current.focus()
@@ -70,10 +75,20 @@ export default function Header() {
 
 
     return (
-        <div className={` h-20 sm:h-44 
-          ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) ? 'via-black to-black flex flex-col justify-between ' : 'flex flex-col justify-around  px-2 sm:px-20  lg:px-36 bg-gradient-to-t from-header via-black to-black  px-2 sm:px-20  lg:px-36'}`}
+        <div className={` h-20 sm:h-44  
+          ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) ? '  via-black to-black flex flex-col justify-between ' : 'flex flex-col justify-around  px-2 sm:px-20  lg:px-36 bg-gradient-to-t from-header via-black to-black  px-2 sm:px-20  lg:px-36'}
+         `}
+
         >
+
             <div className={`flex flex-row  justify-between ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) && 'px-2 sm:px-20  lg:px-36 pt-tp' } `}>
+                {/*burger menu*/}
+                {width < 640 && (
+                    <div className=' flex items-center'>
+                        {width < 640 && <BurgerMenu/>}
+                    </div>
+                )}
+
                 <img onClick={() => router.push('/')} src="/Gloomy-store.svg" alt="gloomy" className='h-8 sm:h-9 lg:h-12 cursor-pointer'/>
                 <nav className='flex justify-end  items-end   '>
                     <ul className=' w-full flex items-center   '>

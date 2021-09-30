@@ -1,8 +1,15 @@
 import Head from 'next/head';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SubCategory from "@/components/subcategory/SubCategory";
+import {useRouter} from "next/router";
 
 export default function Layout({children, title, keywords, description}) {
+    const router = useRouter()
+    const mainPath = router.pathname === '/'
+    const loginPath = router.pathname === '/account/login'
+    const registerPath = router.pathname === '/account/register'
+    const paymentPageStyles = router.pathname === '/paymentInfo/payment'
     return (
         <>
             <Head>
@@ -11,6 +18,9 @@ export default function Layout({children, title, keywords, description}) {
                 <meta name='description' content={description}/>
             </Head>
             <Header />
+            <div className={`${(mainPath || loginPath || registerPath || paymentPageStyles) && 'hidden '  }`}>
+                <SubCategory />
+            </div>
             <div>
                 {children}
             </div>

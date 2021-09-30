@@ -1,6 +1,8 @@
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
 import {useRouter} from "next/router";
+import ClothesPopUp from "@/components/headerMenu/ClothesPopUp";
+import ShoesPopUp from "@/components/headerMenu/ShoesPopUp";
 
 export default function NavbarList() {
     const router = useRouter()
@@ -13,16 +15,18 @@ export default function NavbarList() {
         <nav  className={`hidden sm:block overflow-hidden overflow-x-scroll scrollbar-hide  
                ${(loginPageStyles || registerPageStyles || paymentPageStyles) && '  bg-gray-600  flex py-by  px-2 sm:px-20  lg:px-36'}`}>
             <ul className='flex flex-nowrap text-left'>
-                <li>
-                    <Link href='/clothes'>
-                        <a className='text-sm font-semibold tracking-wider mr-16'>{t('header:clothes')}</a>
-                    </Link>
-                </li>
-                <li>
-                    <Link href='/shoes'>
-                        <a className='text-sm font-semibold tracking-wider mr-16'>{t('header:shoes')}</a>
-                    </Link>
-                </li>
+                <ClothesPopUp /> {/*clothes pop up*/}
+                <ShoesPopUp/> {/*shoes pop up*/}
+                {/*<li>*/}
+                {/*    <Link href='/clothes'>*/}
+                {/*        <a className='text-sm font-semibold tracking-wider mr-16'>{t('header:clothes')}</a>*/}
+                {/*    </Link>*/}
+                {/*</li>*/}
+                {/*<li>*/}
+                {/*    <Link href='/shoes'>*/}
+                {/*        <a className='text-sm font-semibold tracking-wider mr-16'>{t('header:shoes')}</a>*/}
+                {/*    </Link>*/}
+                {/*</li>*/}
                 <li>
                     <Link href='/accessories'>
                         <a className='text-sm font-semibold tracking-wider mr-16'>{t('header:accessories')}</a>
