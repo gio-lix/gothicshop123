@@ -17,6 +17,14 @@ module.exports = {
       'payButton': '#707070'
     }),
     extend: {
+      width: {
+        '1/29': '1.813rem',
+        '1/540': '33.75rem',
+        '1/11': '65.75rem'
+      },
+      fontSize: {
+        "ss": '0.813rem'
+      },
       height: {
         sm: '0.188rem',
         ss: '1.063rem',
@@ -26,6 +34,17 @@ module.exports = {
         ib: '38.125rem',
         ih: '48.125rem'
       },
+      padding: {
+        st: '18px',
+        tt: '66px',
+      },
+      zIndex: {
+        '175': 175,
+      },
+      minHeight: {
+        '1/96': '18rem',
+        '1/99': '26rem',
+      }
     },
   },
   variants: {
