@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import useTranslation from "next-translate/useTranslation";
+import Image from "next/image";
 
 export default function ShoesPopUpWomen({clotheWomenCl, openWomenClothes, items,setShoesPopUp}) {
     let {t} = useTranslation()
@@ -23,7 +24,7 @@ export default function ShoesPopUpWomen({clotheWomenCl, openWomenClothes, items,
             >
                 <div>{t('header:women')}</div>
                 <p   className={`transition duration-200 ease-in-out  ${openWomenClothes && 'transform rotate-90 ' }`}>
-                    <img src="/Polygon3.svg" alt="pol"/>
+                    <Image src="/Polygon3.svg" width={12} height={12}/>
                 </p>
                 {openWomenClothes && (
                     <div

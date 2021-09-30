@@ -6,12 +6,13 @@ import TextInSlug from "@/components/shoes/slug/TextInSlug";
 import {API_URL, NEXT_API} from "@/config/index";
 import {useRouter} from "next/router";
 import useTranslation from "next-translate/useTranslation";
+
 import {checkIndexSize, checkIndexType, currency} from "@/helper/index";
 
 import {StoreContext} from "@/context/createStore";
 import BuyButton from "@/components/BuyButton";
 
-export default function slug({data, randomData}) {
+export default function Slug({data, randomData}) {
     let {t} = useTranslation()
     const router = useRouter()
     const [singleImage, setSingleImage] = useState(``)
@@ -62,7 +63,7 @@ export default function slug({data, randomData}) {
                             {data.image.map((item, i) => (
                                 <div key={i} className='mr-1'>
                                     <button onClick={() => handleClickImage(item)}>
-                                        <Image src={item.formats.small.url} width={60} height={70}/>
+                                        <Image src={item.formats.small.url} width={60} height={70} alt='image'/>
                                     </button>
                                 </div>
                             ))}
@@ -75,7 +76,7 @@ export default function slug({data, randomData}) {
                             ) : (
                                 <div className='lg:w-96'>
                                     <Image src={data.image[0].formats.medium.url} width={400} height={400}
-                                           objectFit='fill'/>
+                                           objectFit='fill' alt='image'/>
                                 </div>
                             )}
                         </div>
@@ -141,13 +142,13 @@ export default function slug({data, randomData}) {
                         <div key={i}>
                             <div className='w-full p-2 sm:p-0 group'>
                                 <Image src={item.image[0].formats.small.url} width={60} height={70}
-                                       layout='responsive'/>
+                                       layout='responsive' alt='image'/>
                                 <div className='grid grid-cols-4 pt-2 '>
                                     <button onClick={() => router.push(`/clothesPage/${item.slug}`)}
                                             className='text-sm col-span-3 group-hover:underline'>{item.title}</button>
                                     <button className='bg-indigo-700 w-7 h-7 '>
                                         <p className=' flex justify-center'>
-                                            <img src="/Path.svg" alt="path"/>
+                                            <Image src="/Path.svg" width={25} height={25} alt="path"/>
                                         </p>
                                     </button>
                                 </div>

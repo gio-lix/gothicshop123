@@ -30,8 +30,8 @@ export default function ClothesOrder({item, deleteItem,addClothesQuantity}) {
                                     value={item.quantity}
                                     onChange={(e) => addClothesQuantity(e.target.value, item.id)}
                             >
-                                {[...Array(20).keys()].map(item => (
-                                    <option value={item + 1}>{item + 1}</option>
+                                {[...Array(20).keys()].map((item,i) => (
+                                    <option value={item + 1} key={i}>{item + 1}</option>
                                 ))}
                             </select>
 

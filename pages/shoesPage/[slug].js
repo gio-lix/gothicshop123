@@ -7,9 +7,11 @@ import {API_URL} from "@/config/index";
 import {useRouter} from "next/router";
 import useTranslation from "next-translate/useTranslation";
 import {checkIndexSize, checkIndexType, currency} from "@/helper/index";
+
 import {StoreContext} from "@/context/createStore";
-import useWindowWidth from "../../customHook/useWindowWidth";
+import useWindowWidth from "@/customHook/useWindowWidth";
 import BuyButton from "@/components/BuyButton";
+
 
 export default function ShoesInfo({data, randomShoes}) {
     let {t} = useTranslation()
@@ -28,7 +30,7 @@ export default function ShoesInfo({data, randomShoes}) {
         totalPrice: data.price,
         quantity: data.quantity,
         checkout_session: data.slug,
-        shoes: data,
+        shoe: data,
         size: []
     })
 
@@ -143,12 +145,12 @@ export default function ShoesInfo({data, randomShoes}) {
                     Object.values(randomShoes).slice(0,6).map((item, i) => (
                         <div key={i}>
                             <div className='w-full p-2 sm:p-0 group'>
-                                <Image src={item.image[0].formats.small.url} width={60} height={70} layout='responsive'/>
+                                <Image src={item.image[0].formats.small.url} width={60} height={70} layout='responsive' alt='image'/>
                                 <div className='grid grid-cols-4 pt-2 '>
                                     <button onClick={() => router.push(`/shoesPage/${item.slug}`)} className='text-sm col-span-3 group-hover:underline'>{item.title}</button>
                                     <button className='bg-indigo-700 w-7 h-7 '>
                                         <p  className=' flex justify-center'>
-                                            <img src="/Path.svg" alt="path" />
+                                            <Image src="/Path.svg" width={25} height={25} alt="path"/>
                                         </p>
                                     </button>
                                 </div>

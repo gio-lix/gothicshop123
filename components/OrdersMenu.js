@@ -31,13 +31,13 @@ export default function OrdersMenu() {
             <div className='h-72 w-full  '>
                 {!orderPath && (
                     <div className='absolute w-full '>
-                        {dataClotheMap && dataClotheMap.map(item => {
+                        {dataClotheMap && dataClotheMap.map((item,i) => {
                                 return (
-                                    <div className=' w-full flex items-center px-1'>
+                                    <div className=' w-full flex items-center px-1' key={i}>
                                         <div className='w-full border-t   flex items-center justify-between'>
                                             <div className='flex '>
                                                 <div className='w-16 h-16 mt-2'>
-                                                    <Image src={item.clothe.image[0].formats.thumbnail.url} height={50} width={50}/>
+                                                    <Image src={item.clothe.image[0].formats.thumbnail.url} height={50} width={50} alt='image'/>
                                                 </div>
                                                 <div className='flex flex-col'>
                                                     <div className='pt-1 ml-1'>
@@ -61,13 +61,13 @@ export default function OrdersMenu() {
                                 )
                             }
                         )}
-                        {dataShoesMap && dataShoesMap.map(item => {
+                        {dataShoesMap && dataShoesMap.map((item, i) => {
                                 return (
-                                    <div className=' w-full flex items-center px-1'>
+                                    <div className=' w-full flex items-center px-1' key={i}>
                                         <div className='w-full border-t   flex items-center justify-between'>
                                             <div className='flex '>
                                                 <div className='w-16 h-16 mt-2'>
-                                                    <Image src={item.shoes.image[0].formats.thumbnail.url} height={50} width={50}/>
+                                                    <Image src={item.shoes.image[0].formats.thumbnail.url} height={50} width={50} alt='image'/>
                                                 </div>
                                                 <div className='flex flex-col'>
                                                     <div className='pt-1 ml-1'>

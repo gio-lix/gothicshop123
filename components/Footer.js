@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
 import useTranslation from "next-translate/useTranslation";
+import Image from "next/image";
 
 export default function Footer() {
     let {t} = useTranslation()
@@ -14,29 +15,35 @@ export default function Footer() {
             <footer className={`w-full px-4 sm:px-28  md:px-36  h-40 ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) ? 'via-black to-black' : ' bg-gradient-to-t from-header via-black to-black' } grid sm:grid-cols-2  sm:h-fh`}>
                 <div className=' flex flex-col justify-around sm:justify-between items-center  sm:py-20'>
                     <div className='mr-auto pl-4'>
+                        {/*<div className='h-10 w-36 '>*/}
+                        {/*    <Image onClick={() => router.push('/')} src="/Gloomy-store.svg" alt="gloomy" height={50} width={150} objectFit='initial' />*/}
+                        {/*</div>*/}
                         {/*<img src="/kisspng-bone.svg" alt="bone"*/}
                         {/*     className='h-6 sm:h-10 opacity-40 absolute mr-4 sm:mr-8'/>*/}
-                        <img src="/Gloomy-store.svg" alt="gloomy" className='h-6 sm:h-8 lg:h-10'/>
+                        {/*<Image src="/Gloomy-store.svg" width={150} height={150} alt='some image' />*/}
+                        <div>
+
+                        </div>
                     </div>
                     <div className='flex'>
                         <Link href='https://www.instagram.com'>
-                            <a>
-                                <img src="/iconfinder.svg" alt="instagram " className='px-2 '/>
+                            <a className='mr-2'>
+                                <Image src="/iconfinder.svg" width={20} height={20} alt='some image' />
                             </a>
                         </Link>
                         <Link href='https://www.facebook.com'>
-                            <a>
-                                <img src="/facebook.svg" alt="instagram " className='px-2 '/>
+                            <a className='mr-2'>
+                                <Image src="/facebook.svg" width={20} height={20} alt='some image' />
                             </a>
                         </Link>
                         <Link href='https://www.twitter.com'>
-                            <a>
-                                <img src="/twitter.svg" alt="instagram " className='px-2 '/>
+                            <a className='mr-3'>
+                                <Image src="/twitter.svg" width={20} height={20} alt='some image' />
                             </a>
                         </Link>
                         <Link href='https://www.youtube.com'>
-                            <a>
-                                <img src="/Youtube.svg" alt="instagram " className='px-2 '/>
+                            <a >
+                                <Image src="/Youtube.svg" width={20} height={20} alt='some image' />
                             </a>
                         </Link>
                     </div>

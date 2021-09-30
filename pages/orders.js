@@ -3,6 +3,7 @@ import {cookieParse, currency} from "@/helper/index";
 import axios from "axios";
 import {API_URL} from "@/config/index";
 import {useRouter} from "next/router";
+
 import ShoesOrder from "@/components/orders/ShoesOrder";
 import ClothesOrder from "@/components/orders/ClothesOrder";
 import {useContext, useEffect, useState} from "react";
@@ -14,7 +15,7 @@ import useTranslation from "next-translate/useTranslation";
 let price = 0
 
 
-export default function Orders({ token}) {
+export default function Orders({orders, token}) {
     let {t} = useTranslation()
     const router = useRouter()
     const orderPath = router.pathname === '/orders'
@@ -47,14 +48,14 @@ export default function Orders({ token}) {
         }
     }
 
-    console.log(filterOrderData)
+
 
     //add shoes quantity
     const addShoesQuantity = async (addQuantity, id) => {
 
         let filterElement = filterOrderData.filter(el => el.id === id)
         filterElement[0].quantity = Number(addQuantity)
-        price = filterElement[0].quantity * filterElement[0].shoes.price
+        price = filterElement[0].quantity * filterElement[0].shoe.price
         filterElement[0].totalPrice = price
         const updateElement = filterElement[0]
         try {
@@ -93,15 +94,15 @@ export default function Orders({ token}) {
     const handleCheckout = () => {
         router.push('/paymentInfo/payment')
     }
-
+    console.log(getOrders())
     return (
         <Layout title='orders'>
             <div className='px-2 sm:px-28 md:px-36 h-96 overflow-y-scroll  scrollbar-hide'>
                 <h1 className='pb-14 font-semibold text-2xl text-gray-400 '>{t('content:shoppingCart')}</h1>
                 <div className=' sm:grid sm:grid-cols-7 sm:gap-x-3'>
                     <div className='sm:col-span-5'>
-                        {filterOrderData && filterOrderData.map((item) => {
-                            if (item.shoes) {
+                        {filterOrderData.length > 0 && filterOrderData.map((item) => {
+                            if (item.shoe) {
                                 return (
                                     <ShoesOrder
                                         item={item}
@@ -178,6 +179,7 @@ export default function Orders({ token}) {
 }
 export const getServerSideProps = async ({req}) => {
     const {token} = cookieParse(req)
+
     return {
         props: { token}
     }

@@ -3,6 +3,7 @@ import {useEffect, useRef, useState} from "react";
 import SubCategoryShow from "@/components/subcategory/SubCategoryShow";
 import SubCategoryItems from "@/components/subcategory/SubCategoryItems";
 import useTranslation from "next-translate/useTranslation";
+import Image from "next/image";
 
 export default function SubCategory() {
     let {t} = useTranslation()
@@ -41,15 +42,15 @@ export default function SubCategory() {
                      className='bg-childrenColor w-36 lg:w-60 h-10  flex justify-between items-center px-2  cursor-pointer'>
                     <p className=' text-gray-400'>{t('header:subCategory')}</p>
                     {showItems ? (<p><img src="/pol.svg" alt="pol"/></p>) : (
-                        <p className='-rotate-90'><img src="/pol.svg" alt="pol"/></p>)}
+                        <p className='-rotate-90'>  <Image src="/Polygon3.svg" width={12} height={12} alt='some value'/></p>)}
                 </div>
                 <div className='flex '>
                     <div
                         onClick={handleSort}
                         className='bg-childrenColor w-36 lg:w-60 h-10 border border-gray-500 text-gray-400 px-2 flex justify-between items-center  cursor-pointer'>
                         <p>{t('header:sort')}</p>
-                        {showSort ? (<p><img src="/pol.svg" alt="pol"/></p>) : (
-                            <p className='-rotate-90'><img src="/pol.svg" alt="pol"/></p>)}
+                        {showSort ? (<p> <Image src="/Polygon3.svg" width={12} height={12} alt='some value'/></p>) : (
+                            <p className='-rotate-90'> <Image src="/Polygon3.svg" width={12} height={12} alt='some value'/></p>)}
                     </div>
                     {/*show items to subcategory*/}
                     {showSort && <SubCategoryShow setShowSort={setShowSort} direction='right' path={+0}

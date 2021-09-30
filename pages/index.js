@@ -44,7 +44,7 @@ export default function Home() {
                     {slider.map((slide,index) => {
                         return (
                             <div className='w-full h-96 sm:h-ic ' key={index}>
-                                <Image src={slide.url}  layout='fill'  />
+                                <Image src={slide.url}  layout='fill'  alt='some value' />
                             </div>
                         )
                     })}

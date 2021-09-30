@@ -31,9 +31,9 @@ export default function SubCategoryShow({direction, path, text}) {
     const [brandInfo , setBrandInfo] = useState('')
     const [colorInfo , setColorInfo] = useState('')
 
+    const {state: {allCart}, dispatch} = useContext(StoreContext)
 
     const handleClockSort = (item) => {
-        // const sliceItem = item.slice(3)
 
 
         switch (item) {
@@ -73,7 +73,7 @@ export default function SubCategoryShow({direction, path, text}) {
 
 
 
-    const {state: {allCart}, dispatch} = useContext(StoreContext)
+
 
     const handleColor = (color) => {
         let newColor = checkItemLang(color)

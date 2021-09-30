@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 export default function SlugLogo({img}) {
     console.log(img)
     return (
         <>
             <button >
-                <img src={`/${img}`} alt="img"/>
+                <Image src={`/${img}`} width={10} height={10}/>
             </button>
         </>
     )

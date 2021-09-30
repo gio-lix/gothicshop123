@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import useTranslation from "next-translate/useTranslation";
+import Image from "next/image";
 
 export default function WomenPopUpClothes({items,showWomenClothes, setShowClothes ,clothesWomUnShow,setShowMenClothes}) {
     let {t} = useTranslation()
@@ -21,7 +22,7 @@ export default function WomenPopUpClothes({items,showWomenClothes, setShowClothe
                  className='relative flex justify-between items-center px-2  cursor-pointer '>
                 <div>{t('header:women')}</div>
                 <p className={`transition duration-200 ease-in-out ${showWomenClothes && 'transform rotate-90' }`}>
-                    <img src="/Polygon3.svg" alt="pol"/>
+                    <Image src="/Polygon3.svg" width={12} height={12}/>
                 </p>
                 {showWomenClothes && (
                     <div
