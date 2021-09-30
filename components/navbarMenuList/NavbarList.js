@@ -1,10 +1,17 @@
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
+import {useRouter} from "next/router";
 
 export default function NavbarList() {
+    const router = useRouter()
+    const loginPageStyles = router.pathname === '/account/login'
+    const registerPageStyles = router.pathname === '/account/register'
+    const paymentPageStyles = router.pathname === '/paymentInfo/payment'
+
     let {t} = useTranslation()
     return (
-        <nav className='hidden sm:block overflow-hidden overflow-x-auto scrollbar-hide  '>
+        <nav  className={`hidden sm:block overflow-hidden overflow-x-scroll scrollbar-hide  
+               ${(loginPageStyles || registerPageStyles || paymentPageStyles) && '  bg-gray-600  flex py-by  px-2 sm:px-20  lg:px-36'}`}>
             <ul className='flex flex-nowrap text-left'>
                 <li>
                     <Link href='/clothes'>

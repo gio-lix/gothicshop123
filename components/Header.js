@@ -19,9 +19,10 @@ export default function Header() {
     const [language, setLanguage] = useState(false)
 
     const loginPageStyles = router.pathname === '/account/login'
-    const homeStyle = router.pathname === '/'
     const registerPageStyles = router.pathname === '/account/register'
+    const paymentPageStyles = router.pathname === '/paymentInfo/payment'
     const orderPath = router.pathname === '/orders'
+    const homeStyle = router.pathname === '/'
 
     const clearRef = useRef()
     const loginRef = useRef()
@@ -66,8 +67,10 @@ export default function Header() {
     }
 
     return (
-        <div className=' h-20 sm:h-44 bg-gradient-to-t from-header via-black to-black px-2 sm:px-20  lg:px-36  flex flex-col justify-around'>
-            <div className='flex flex-row  justify-between '>
+        <div className={` h-20 sm:h-44 
+          ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) ? 'via-black to-black flex flex-col justify-between ' : 'flex flex-col justify-around  px-2 sm:px-20  lg:px-36 bg-gradient-to-t from-header via-black to-black  px-2 sm:px-20  lg:px-36'}`}
+        >
+            <div className={`flex flex-row  justify-between ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) && 'px-2 sm:px-20  lg:px-36 pt-tp' } `}>
                 <img src="/Gloomy-store.svg" alt="gloomy" className='h-8 sm:h-9 lg:h-12'/>
                 <nav className='flex justify-end  items-end   '>
                     <ul className=' w-full flex items-center   '>
@@ -180,7 +183,8 @@ export default function Header() {
                 </nav>
             </div>
             {/*    nav bar list*/}
-            <NavbarList/>
+
+            <NavbarList />
         </div>
     )
 }

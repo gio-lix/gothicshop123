@@ -36,6 +36,8 @@ module.exports = {
       },
       padding: {
         st: '18px',
+        tp: '26px',
+        by: '27px',
         tt: '66px',
       },
       zIndex: {

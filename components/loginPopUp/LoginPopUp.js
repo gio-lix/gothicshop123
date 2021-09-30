@@ -23,7 +23,7 @@ export default function LoginPopUp({setLoginPopUp}) {
         <>
             <div className={`${!loginPageStyles && ' border border-gray-500 h-full group'}`}>
                 <div
-                    className={`flex flex-col    ${!loginPageStyles ? 'mt-2 w-full h-full sm:px-10 ' : 'w-full  mt-6 w-72'}`}
+                    className={`flex flex-col    ${!loginPageStyles ? 'mt-2 w-full h-full sm:px-10 ' : 'w-full px-4  mt-6 w-72'}`}
                 >
                     {!user ? (
                         <>
