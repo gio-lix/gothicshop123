@@ -2,6 +2,6 @@
   "locales": ["EN", "GE"],
   "defaultLocale": "EN",
   "pages": {
-    "*": ["header", "footer"]
+    "*": ["header", "footer", "content"]
   }
 }

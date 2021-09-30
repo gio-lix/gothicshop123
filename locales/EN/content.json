@@ -1,0 +1,58 @@
+{
+  "price": "GEL",
+  "size": "size",
+  "chart": "add chart",
+  "buy": "Buy now",
+  "deliver": "free delivery on all orders over 100 GEL",
+  "description": "Detailed description",
+  "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.",
+  "text2": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam laboris nisi ut aliquip ex ea commodo consequat. ",
+  "name": "{{name}}",
+  "related": "Related Products",
+
+  "subTotal": "Subtotal items",
+  "total": "Total",
+  "shoppingCart": "shopping cart",
+
+  "help": "Need help ? ",
+  "deliverInfo": "Delivery",
+  "refund": "Return && Refund",
+  "ordering": "Ordering && Payment",
+  "promotion": "Promotion && Vouchers",
+  "available": "Our costumer service available at: ",
+  "time": "Estimated delivery time: between 13-15 ",
+  "promo": "Do you have promo code",
+
+  "sale": "sale",
+  "discount": "up to 40% on the select items",
+
+  "us": "New in blogs",
+  "design": "designer of the week",
+
+  "joinUs": "Join us",
+  "joinText": "you're a crafter, jewellry maker or a designer? Join us and sell your products via our platform!",
+  "views": "views",
+
+  "nameInfo": "Name",
+  "Surname": "Surname",
+  "phone": "Phone",
+  "email": "E-mail",
+  "address": "Address",
+  "city": "City",
+  "country": "Country",
+  "zipCode": "Zip code",
+  "deliveryInfo": "Delivery instructions",
+  "addAddress": "ADD ADDRESS",
+  "summery": "Summery",
+  "priceInfo": "price",
+  "deliveryPrice": "Delivery price",
+  "totalPrice": "Total price",
+  "paymentMethod": "Payment method",
+  "pay": "PAY",
+
+
+
+
+  "login": "Login for add"
+
+}
