@@ -1,4 +1,4 @@
-import {forwardRef, useEffect, useRef, useState} from "react";
+
 import {useRouter} from "next/router";
 import useTranslation from "next-translate/useTranslation";
 
@@ -10,7 +10,7 @@ export default function ShoesPopUpMen({closeMenClothes, popUpMenClothes, items,s
 
 
     const handleClick = (item) => {
-        // router.push(`/category/shoes/shoesMenCategory/${item.replace('/', '-').toLowerCase().toString()}`)
+        router.push(`/category/shoes/shoesMenCategory/${item.replace('/', '-').toLowerCase().toString()}`)
         setShoesPopUp(false)
     }
 

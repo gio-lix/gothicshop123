@@ -10,7 +10,7 @@ export default function WomenPopUpClothes({items,showWomenClothes, setShowClothe
 
 
     const handleClick = (item) => {
-        // router.push(`/category/clothes/clothesWomenCategory/${item.replace('/', '-').toLowerCase().toString()}`)
+        router.push(`/category/clothes/clothesWomenCategory/${item.replace('/', '-').toLowerCase().toString()}`)
         setShowClothes(false)
     }
 

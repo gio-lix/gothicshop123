@@ -3,7 +3,7 @@ import ShoesPopUp from "@/components/headerMenu/ShoesPopUp";
 import ClothesPopUp from "@/components/headerMenu/ClothesPopUp";
 import useTranslation from "next-translate/useTranslation";
 
-export default function NavBar({loginPageStyles,registerPageStyles, paymentPageStyles}) {
+export default function NavbarList({loginPageStyles,registerPageStyles, paymentPageStyles}) {
 
     let {t} = useTranslation()
     return (

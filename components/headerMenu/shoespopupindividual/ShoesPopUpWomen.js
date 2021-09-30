@@ -9,7 +9,7 @@ export default function ShoesPopUpWomen({clotheWomenCl, openWomenClothes, items,
 
 
     const handleClick = (item) => {
-        // router.push(`/category/shoes/shoesWomenCategory/${item.replace('/', '-').toLowerCase().toString()}`)
+        router.push(`/category/shoes/shoesWomenCategory/${item.replace('/', '-').toLowerCase().toString()}`)
         setShoesPopUp(false)
     }
 
