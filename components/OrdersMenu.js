@@ -14,7 +14,7 @@ export default function OrdersMenu() {
 
 
     const dataClotheMap = filterOrderData && filterOrderData.filter(element => element.clothe)
-    const dataShoesMap = filterOrderData && filterOrderData.filter(element => element.shoes)
+    const dataShoesMap = filterOrderData && filterOrderData.filter(element => element.shoe)
 
     const deleteItem = async (id) => {
         const token = await getToken()
@@ -67,17 +67,17 @@ export default function OrdersMenu() {
                                         <div className='w-full border-t   flex items-center justify-between'>
                                             <div className='flex '>
                                                 <div className='w-16 h-16 mt-2'>
-                                                    <Image src={item.shoes.image[0].formats.thumbnail.url} height={50} width={50} alt='image'/>
+                                                    <Image src={item.shoe.image[0].formats.thumbnail.url} height={50} width={50} alt='image'/>
                                                 </div>
                                                 <div className='flex flex-col'>
                                                     <div className='pt-1 ml-1'>
-                                                        <p className='text-xs'>{item.shoes.title}</p>
+                                                        <p className='text-xs'>{item.shoe.title}</p>
                                                     </div>
                                                     <div className='pt-1 ml-1'>
-                                                        <p className='text-xs'>{item.shoes.brand} </p>
+                                                        <p className='text-xs'>{item.shoe.brand} </p>
                                                     </div>
                                                     <div className='pt-1 ml-1'>
-                                                        <p className='text-xs'>{item.shoes.price} <span>{t('content:price')}</span></p>
+                                                        <p className='text-xs'>{item.shoe.price} <span>{t('content:price')}</span></p>
                                                     </div>
                                                 </div>
                                             </div>

@@ -66,6 +66,18 @@ export default function Header() {
             setLanguage(false)
         }
     }
+
+
+    useEffect(() => {
+        document.body.addEventListener('click', handleCart)
+        return () => document.body.removeEventListener('click', handleCart)
+    },[])
+    const handleCart = (e) => {
+        if (!e.path.includes(cartRef.current)) {
+            setOpenCart(false)
+        }
+    }
+
     const handleSearch = (e) => {
         e.preventDefault()
         router.push(`/search/search?term=${searchResult}`)
@@ -88,7 +100,7 @@ export default function Header() {
     }
     const deleteAllOrders = () => {
         const dataClotheMap = filterOrderData && filterOrderData.filter(element => element.clothe).map(item => item.id)
-        const dataShoesMap = filterOrderData && filterOrderData.filter(element => element.shoes).map(item => item.id)
+        const dataShoesMap = filterOrderData && filterOrderData.filter(element => element.shoe).map(item => item.id)
         const dataDeleteId = [...dataClotheMap,...dataShoesMap]
         dataDeleteId.map((item, i) => (
             deleteAllOrdersId(item)
@@ -121,13 +133,15 @@ export default function Header() {
                         {width < 640 && <BurgerMenu/>}
                     </div>
                 )}
-
+                {/*logo image*/}
                 <img onClick={() => router.push('/')} src="/Gloomy-store.svg" alt="gloomy"  className='h-8 sm:h-9 lg:h-12 cursor-pointer'/>
+
+                {/*navigation*/}
                 <nav className='flex justify-end  items-end   '>
                     <ul className=' w-full flex items-center   '>
                         <li>
                             <Link href='/'>
-                                <a className='mr-4 sm:mr-8'>{t('header:join')}</a>
+                                <a className='hidden sm:inline-flex mr-4 sm:mr-8'>{t('header:join')}</a>
                             </Link>
                         </li>
                         <li>
@@ -231,7 +245,7 @@ export default function Header() {
                                             <p>{filterOrderData && filterOrderData.length}</p>
                                         </div>
                                     )}
-                                    <img src="/Path.svg" alt="group" className='h-5 mt-2 sm:mt-0 sm:h-7'/>
+                                    <img src="/Path.svg" alt="group" className='h-7 '/>
                                 </div>
                             </div>
                         )}
