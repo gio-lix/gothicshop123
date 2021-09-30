@@ -7,18 +7,23 @@ import useTranslation from "next-translate/useTranslation";
 import LoginPopUp from "@/components/loginPopUp/LoginPopUp";
 import BurgerMenu from "@/components/burger/BurgerMenu";
 import useWindowWidth from "@/customHook/useWindowWidth";
+import axios from "axios";
+import {API_URL} from "@/config/index";
+import OrdersMenu from "@/components/OrdersMenu";
 
 
 export default function Header() {
 
     let {t} = useTranslation()
-    const {user, logout ,error, setError} = useContext(StoreContext)
+    const {user,getToken, logout ,error, setError,filterOrderData, setFilterOrderData} = useContext(StoreContext)
     const router = useRouter()
 
     const [loginPopUp, setLoginPopUp] = useState(false)
     const [searchResult, setSearchResult] = useState('')
     const [searchToggle, setSearchToggle] = useState(false)
     const [language, setLanguage] = useState(false)
+    const [openCart, setOpenCart] = useState(false)
+
 
     const loginPageStyles = router.pathname === '/account/login'
     const registerPageStyles = router.pathname === '/account/register'
@@ -28,6 +33,7 @@ export default function Header() {
 
     const clearRef = useRef()
     const loginRef = useRef()
+    const cartRef = useRef()
     const searchRef = useRef('')
     const useLanguageRef = useRef()
 
@@ -66,14 +72,44 @@ export default function Header() {
         setSearchToggle(false)
     }
 
+    //delete all order by id
+    const deleteAllOrdersId = async (el) => {
+        const token = await getToken()
+        try {
+            const {data} = await axios.delete(`${API_URL}/orders/${el}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            setFilterOrderData('')
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    const deleteAllOrders = () => {
+        const dataClotheMap = filterOrderData && filterOrderData.filter(element => element.clothe).map(item => item.id)
+        const dataShoesMap = filterOrderData && filterOrderData.filter(element => element.shoes).map(item => item.id)
+        const dataDeleteId = [...dataClotheMap,...dataShoesMap]
+        dataDeleteId.map((item, i) => (
+            deleteAllOrdersId(item)
+        ))
+    }
 
     const handleOpen = () => setSearchToggle(!searchToggle)
     const loginPopUpInput = () => setLoginPopUp(!loginPopUp)
     const handleChangeLanguage = () => setLanguage(!language)
 
 
+    const handleOpenOrderCart = () => {
+        if (width < 740 ) {
+            router.push('/orders')
+            return
+        }
+        if (!orderPath) {
+            setOpenCart(!openCart)
+        }
 
-
+    }
     return (
         <div className={` h-20 sm:h-44  
           ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) ? '  via-black to-black flex flex-col justify-between ' : 'flex flex-col justify-around  px-2 sm:px-20  lg:px-36 bg-gradient-to-t from-header via-black to-black  px-2 sm:px-20  lg:px-36'}
@@ -168,39 +204,46 @@ export default function Header() {
                                 )}
                             </div>
                         </div>
-                        {/*{!user ? (*/}
-                        {/*    <>*/}
-                        {/*        <li>*/}
-                        {/*            <Link href='/account/login'>*/}
-                        {/*                <a>*/}
-                        {/*                    <img src="ghost.svg" alt="ghost"/>*/}
-                        {/*                </a>*/}
-                        {/*            </Link>*/}
-                        {/*        </li>*/}
+                        {user && (
+                            <div ref={cartRef}>
+                                {openCart && (
+                                    <div className='absolute' >
+                                        <div className='w-64 h-72 absolute overflow-y-scroll scrollbar-hide z-175 bg-input mt-9 border border-gray-600 -ml-52'
+                                             style={{backgroundImage: "url('/bg.png')"}}>
+                                            <OrdersMenu  />
 
-                        {/*    </>*/}
+                                        </div>
+                                        <div className='-ml-48 '>
+                                            <button
+                                                onClick={() => router.push('/orders')}
+                                                className='absolute top-36 z-175 mt-36 w-28 h-7 bg-input rounded-xl items-center '>
+                                                <p className='uppercase text-sm'> {t('header:openCart')}</p>
+                                            </button>
+                                            <button
+                                                className='top-36  mt-36 ml-36 absolute z-175
+                                                     whitespace-nowrap text-sm text-gray-400 hover:text-white'
+                                                onClick={deleteAllOrders}> {t('header:deleteAll')}</button>
+                                        </div>
+                                    </div>
 
-                        {/*) : (*/}
-                        {/*    <>*/}
-
-                        {/*        <li>*/}
-                        {/*            <button onClick={() => logout()} className='mr-4 sm:mr-8'>logout</button>*/}
-                        {/*        </li>*/}
-                        {/*        <li>*/}
-                        {/*            <Link href=''>*/}
-                        {/*                <a>*/}
-                        {/*                    <img src="/Path.svg" alt="Path"/>*/}
-                        {/*                </a>*/}
-                        {/*            </Link>*/}
-                        {/*        </li>*/}
-                        {/*    </>*/}
-
-                        {/*)}*/}
+                                )}
+                                {/*open cart bar*/}
+                                <div className='relative cursor-pointer ' onClick={handleOpenOrderCart} >
+                                    {filterOrderData.length > 0 && (
+                                        <div className='absolute h-6 z-20 left-2 -top-2 sm:left-4 w-5 h-5 bg-input flex items-center justify-center rounded-2xl'>
+                                            <p>{filterOrderData && filterOrderData.length}</p>
+                                        </div>
+                                    )}
+                                    <img src="/Path.svg" alt="group" className='h-5 mt-2 sm:mt-0 sm:h-7'/>
+                                </div>
+                            </div>
+                        )}
                     </ul>
                 </nav>
+
+
             </div>
             {/*    nav bar list*/}
-
             <NavbarList />
         </div>
     )
