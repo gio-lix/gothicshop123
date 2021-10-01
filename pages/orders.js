@@ -92,7 +92,7 @@ export default function Orders({orders, token}) {
     }
 
     const handleCheckout = () => {
-        router.push('/paymentInfo/payment')
+        router.push('/payment/payment')
     }
     console.log(getOrders())
     return (

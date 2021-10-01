@@ -9,7 +9,7 @@ export default function Layout({children, title, keywords, description}) {
     const mainPath = router.pathname === '/'
     const loginPath = router.pathname === '/account/login'
     const registerPath = router.pathname === '/account/register'
-    const paymentPageStyles = router.pathname === '/paymentInfo/payment'
+    const paymentPageStyles = router.pathname === '/payment/payment'
     return (
         <>
             <Head>
