@@ -21,7 +21,7 @@ export default function Layout({children, title, keywords, description}) {
             <div className={`${(mainPath || loginPath || registerPath || paymentPageStyles) && 'hidden '  }`}>
                 <SubCategory />
             </div>
-            <div>
+            <div className='pt-20 sm:pt-0'>
                 {children}
             </div>
             <Footer />

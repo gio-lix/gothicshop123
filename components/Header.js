@@ -123,8 +123,9 @@ export default function Header() {
 
     }
     return (
-        <div className={` h-20 sm:h-44   ${width < 640 && ' fixed w-full z-50' }
+        <div className={` h-20 sm:h-44 fixed z-50 w-full sm:sticky 
           ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) ? '  via-black to-black flex flex-col justify-between ' : 'flex flex-col justify-around  px-2 sm:px-20  lg:px-36 bg-gradient-to-t from-header via-black to-black  px-2 sm:px-20  lg:px-36'} `}
+
         >
             <div className={`flex flex-row  justify-between ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) && 'px-2 sm:px-20  lg:px-36 pt-tp' } `}>
                 {/*burger menu*/}
