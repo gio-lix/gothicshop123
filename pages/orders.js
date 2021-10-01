@@ -97,7 +97,7 @@ export default function Orders({orders, token}) {
     console.log(getOrders())
     return (
         <Layout title='orders'>
-            <div className='px-2 sm:px-28 md:px-36 h-96 overflow-y-scroll  scrollbar-hide'>
+            <div className='px-2 sm:px-28 md:px-36 h-96 overflow-y-scroll   scrollbar-hide'>
                 <h1 className='pb-14 text-center sm:text-left font-semibold text-2xl text-gray-400 '>{t('content:shoppingCart')}</h1>
                 <div className=' sm:grid sm:grid-cols-7 sm:gap-x-3'>
                     <div className='sm:col-span-5'>

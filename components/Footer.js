@@ -14,16 +14,12 @@ export default function Footer() {
         <>
             <footer className={`w-full px-4 sm:px-28  md:px-36  h-40 ${((loginPageStyles || registerPageStyles) || registerPageStyles || paymentPageStyles) ? 'via-black to-black' : ' bg-gradient-to-t from-header via-black to-black' } grid sm:grid-cols-2  sm:h-fh`}>
                 <div className=' flex flex-col justify-around sm:justify-between items-center  sm:py-20'>
-                    <div className='mr-auto pl-4'>
-                        {/*<div className='h-10 w-36 '>*/}
-                        {/*    <Image onClick={() => router.push('/')} src="/Gloomy-store.svg" alt="gloomy" height={50} width={150} objectFit='initial' />*/}
-                        {/*</div>*/}
+                    <div className='sm:mr-auto pl-4'>
+                        <img onClick={() => router.push('/')} src="/Gloomy-store.svg" alt="gloomy"  className='h-8 sm:h-9 lg:h-12 cursor-pointer text-center sm:text-left'/>
                         {/*<img src="/kisspng-bone.svg" alt="bone"*/}
                         {/*     className='h-6 sm:h-10 opacity-40 absolute mr-4 sm:mr-8'/>*/}
                         {/*<Image src="/Gloomy-store.svg" width={150} height={150} alt='some image' />*/}
-                        <div>
 
-                        </div>
                     </div>
                     <div className='flex'>
                         <Link href='https://www.instagram.com'>
