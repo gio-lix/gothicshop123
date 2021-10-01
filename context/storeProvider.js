@@ -42,12 +42,10 @@ export default function StoreProvider({children}) {
     const login = async ({email: identifier, password}) => {
         try {
             const {data: {user}} = await axios.post(`${NEXT_API}/api/login`, {identifier, password})
-            // router.push('/orders')
             setUser(user)
         } catch (err) {
             setError(err.response.data.message)
         }
-
     }
 
     const register = async ({username, email, password}) => {
