@@ -23,8 +23,8 @@ export default function StoreProvider({children}) {
     const [user, setUser] = useState(null)
     const [filterOrderData, setFilterOrderData] = useState([])
     const [infoText , setInfoText] = useState('')
+    const [error, setError] = useErrorHook('')
 
-    const [error, setError] = useErrorHook()
     const router = useRouter()
 
     useEffect(() => {
@@ -43,8 +43,8 @@ export default function StoreProvider({children}) {
         try {
             const {data: {user}} = await axios.post(`${NEXT_API}/api/login`, {identifier, password})
             setUser(user)
-        } catch (err) {
-            setError(err.response.data.message)
+        } catch (error) {
+            setError(error.response.data.message)
         }
     }
 
@@ -53,8 +53,8 @@ export default function StoreProvider({children}) {
             const {data: {user}} = await axios.post(`${NEXT_API}/api/register`, {username, email, password})
             setUser(user)
             router.push('/')
-        } catch (err) {
-            setError(err.response.data.message)
+        } catch (error) {
+            setError(error.response.data.message)
 
         }
     }
@@ -63,8 +63,8 @@ export default function StoreProvider({children}) {
         try {
             const {data: {user}} = await axios.get(`${NEXT_API}/api/user`)
             setUser(user)
-        } catch (err) {
-            console.log(err)
+        } catch (error) {
+            setError(error.response.data.message)
         }
     }
     const logout = async () => {
@@ -72,8 +72,8 @@ export default function StoreProvider({children}) {
             const {data} = await axios.post(`${NEXT_API}/api/logout`)
             router.push('/')
             setUser(null)
-        } catch (err) {
-            console.log(err)
+        } catch (error) {
+            setError(error.response.data.message)
         }
     }
     const getOrders = async () => {
@@ -81,15 +81,15 @@ export default function StoreProvider({children}) {
             const {data: {data: ordersData}} = await axios.get(`${NEXT_API}/api/orders`)
             return ordersData
         } catch (err) {
-            console.log(err)
+            setError(error.response.data.message)
         }
     }
     const getToken = async () => {
         try {
             const {data: {token}} = await axios.get(`${NEXT_API}/api/check`)
             return token
-        } catch (err) {
-            console.log(err)
+        } catch (error) {
+            setError(error.response.data.message)
         }
     }
 
