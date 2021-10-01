@@ -37,7 +37,7 @@ export default function BuyButton({product}) {
             setInfoText('item already exist')
             return
         }
-        console.log(product)
+
         try {
             const {data} = await axios.post(`${API_URL}/orders`, product, {
                 headers: {

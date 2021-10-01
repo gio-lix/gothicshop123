@@ -108,7 +108,9 @@ export default function StoreProvider({children}) {
             error,
             setError,
             state,
-            dispatch
+            dispatch,
+            infoText ,
+            setInfoText
         }}>
             {children}
         </StoreContext.Provider>

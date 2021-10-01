@@ -206,7 +206,7 @@ export default function Header() {
                                     <>
                                         {loginPopUp && (
                                             <div
-                                                className=' w-64 h-lh pt-7 right-10 absolute z-50 p-2 '
+                                                className=' w-64 mt-1 h-lh pt-7 right-10 absolute z-50 p-2 '
                                                 style={{backgroundImage: "url('/bg.png')"}}>
                                                 <LoginPopUp setLoginPopUp={setLoginPopUp}/>
                                             </div>
@@ -219,7 +219,7 @@ export default function Header() {
                         {user && (
                             <div ref={cartRef}>
                                 {openCart && (
-                                    <div className='absolute' >
+                                    <div className='absolute mt-5' >
                                         <div className='w-64 h-72 absolute overflow-y-scroll scrollbar-hide z-175 bg-input mt-9 border border-gray-600 -ml-52'
                                              style={{backgroundImage: "url('/bg.png')"}}>
                                             <OrdersMenu  />
