@@ -15,8 +15,12 @@ import Image from "next/image";
 export default function Header() {
 
     let {t} = useTranslation()
-    const {user,getToken, logout ,error, setError,filterOrderData, setFilterOrderData} = useContext(StoreContext)
+    const {user,getToken,getOrders, logout ,error, setError,filterOrderData, setFilterOrderData} = useContext(StoreContext)
     const router = useRouter()
+
+
+
+
 
     const [loginPopUp, setLoginPopUp] = useState(false)
     const [searchResult, setSearchResult] = useState('')
@@ -39,6 +43,15 @@ export default function Header() {
 
 
     const {width, height} = useWindowWidth()
+
+    useEffect(() => {
+        const da = async () => {
+            let ordersData = await getOrders()
+            setFilterOrderData(ordersData)
+        }
+        da()
+    }, [])
+
 
     useEffect(() => {
         if (searchRef.current) searchRef.current.focus()
