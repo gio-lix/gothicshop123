@@ -98,7 +98,7 @@ export default function Orders({orders, token}) {
     return (
         <Layout title='orders'>
             <div className='px-2 sm:px-28 md:px-36 h-96 overflow-y-scroll  scrollbar-hide'>
-                <h1 className='pb-14 font-semibold text-2xl text-gray-400 '>{t('content:shoppingCart')}</h1>
+                <h1 className='pb-14 text-center sm:text-left font-semibold text-2xl text-gray-400 '>{t('content:shoppingCart')}</h1>
                 <div className=' sm:grid sm:grid-cols-7 sm:gap-x-3'>
                     <div className='sm:col-span-5'>
                         {filterOrderData.length > 0 && filterOrderData.map((item) => {
@@ -130,8 +130,8 @@ export default function Orders({orders, token}) {
             <div className='w-full h-44 sm:py-1 sm:py-2 '>
                 <div className=' px-2 h-full flex flex-col-reverse  mt-4 sm:mt-2 flex-col sm:flex-row justify-between  px-2 sm:px-28 md:px-36 '>
                     <div className='text-gray-400 flex flex-col justify-between'>
-                        <p className='text-sm sm:text-base'>{t('content:promo')}</p>
-                        <div className=''>
+                        <p className='text-sm sm:text-base  text-center sm:text-left'>{t('content:promo')}</p>
+                        <div className=' text-center sm:text-left'>
                             <input
                                 placeholder='enter a code..'
                                 type="text" className='rounded sm:p-1 mt-2 text-black outline-none bg-gray-500'/>
@@ -142,7 +142,7 @@ export default function Orders({orders, token}) {
                         </div>
 
                     </div>
-                    <div className='flex flex-col w-64 justify-around  '>
+                    <div className='flex flex-col w-full px-8 sm:px-0 sm:w-64 justify-around   '>
                         <div className='flex  '>
                             <div className='flex w-full justify-between'>
                                 <p className=' text-gray-600'> {t('content:subTotal')}: </p>
@@ -168,7 +168,7 @@ export default function Orders({orders, token}) {
                         </div>
                         <div
                             onClick={handleCheckout}
-                            className='bg-buttonColor group  lg:w-72  rounded-2xl bg-input text-center cursor-pointer '  >
+                            className='bg-buttonColor  group w-full  sm:w-64  rounded-2xl bg-input text-center cursor-pointer '  >
                             <p className='sm:p-2 p-1 text-gray-400 group-hover:text-white'>checkout</p>
                         </div>
                     </div>
