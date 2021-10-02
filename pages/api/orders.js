@@ -15,7 +15,7 @@ export default async (req, res) => {
                     Authorization: `Bearer ${token}`
                 }
             })
-            res.status(200).json({data})
+            res.status(200).json({data}).end()
         } catch (err) {
             console.log(err)
         }

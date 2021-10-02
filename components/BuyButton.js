@@ -8,7 +8,7 @@ import useTranslation from "next-translate/useTranslation";
 
 export default function BuyButton({product}) {
     let {t} = useTranslation()
-    const {user, getToken, getOrders , setInfoText} = useContext(StoreContext)
+    const {user, getToken, getOrders , setInfoText, setFilterOrderData} = useContext(StoreContext)
 
 
     const router = useRouter()

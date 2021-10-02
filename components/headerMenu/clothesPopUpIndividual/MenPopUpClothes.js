@@ -20,7 +20,7 @@ export default function MenPopUpClothes({items,clothesUnShow,showMenClothes,setS
                  className='relative flex justify-between items-center px-2  cursor-pointer '>
                 <div>{t('header:men')}</div>
                 <p className={`transition duration-200 ease-in-out  ${showMenClothes && 'transform rotate-90 ' }`}>
-                    <Image src="/Polygon3.svg" width={12} height={12}/>
+                    <Image src="/Polygon3.svg" width={12} height={12} alt='some value'/>
                 </p>
                 {showMenClothes && (
                     <div

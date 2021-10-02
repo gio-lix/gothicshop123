@@ -3,7 +3,6 @@ import {cookieParse, currency} from "@/helper/index";
 import axios from "axios";
 import {API_URL} from "@/config/index";
 import {useRouter} from "next/router";
-
 import ShoesOrder from "@/components/orders/ShoesOrder";
 import ClothesOrder from "@/components/orders/ClothesOrder";
 import {useContext, useEffect, useState} from "react";
@@ -15,7 +14,7 @@ import useTranslation from "next-translate/useTranslation";
 let price = 0
 
 
-export default function Orders({orders, token}) {
+export default function Orders({data, token}) {
     let {t} = useTranslation()
     const router = useRouter()
     const orderPath = router.pathname === '/orders'
@@ -23,14 +22,19 @@ export default function Orders({orders, token}) {
     const {getOrders, filterOrderData, setFilterOrderData} = useContext(StoreContext)
 
 
-
     useEffect(() => {
-        const getOrder = async () => {
-            let ordersData = await getOrders()
-            setFilterOrderData(ordersData)
-        }
-        getOrder()
+        setFilterOrderData(data)
     },[])
+    // console.log('change data')
+    // console.log(filterOrderData)
+    //
+    // useEffect(() => {
+    //     const getOrder = async () => {
+    //         let ordersData = await getOrders()
+    //         setFilterOrderData(ordersData)
+    //     }
+    //     getOrder()
+    // },[])
 
 
 
@@ -42,7 +46,6 @@ export default function Orders({orders, token}) {
                 }
             })
             setFilterOrderData(filterOrderData.filter(el => el.id !== data.id))
-
         } catch (err) {
             console.log(err)
         }
@@ -94,7 +97,6 @@ export default function Orders({orders, token}) {
     const handleCheckout = () => {
         router.push('/payment/payment')
     }
-    console.log(getOrders())
     return (
         <Layout title='orders'>
             <div className='px-2 sm:px-28 md:px-36 h-96 overflow-y-scroll   scrollbar-hide'>
@@ -179,8 +181,12 @@ export default function Orders({orders, token}) {
 }
 export const getServerSideProps = async ({req}) => {
     const {token} = cookieParse(req)
-
+    const {data} = await axios.get(`${API_URL}/orders`,{
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
     return {
-        props: { token}
+        props: { token,data}
     }
 }

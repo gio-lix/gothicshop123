@@ -22,7 +22,7 @@ export default function WomenPopUpClothes({items,showWomenClothes, setShowClothe
                  className='relative flex justify-between items-center px-2  cursor-pointer '>
                 <div>{t('header:women')}</div>
                 <p className={`transition duration-200 ease-in-out ${showWomenClothes && 'transform rotate-90' }`}>
-                    <Image src="/Polygon3.svg" width={12} height={12}/>
+                    <Image src="/Polygon3.svg" width={12} height={12} alt='some value'/>
                 </p>
                 {showWomenClothes && (
                     <div

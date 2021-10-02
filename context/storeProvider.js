@@ -17,6 +17,8 @@ const initialState = {
     },
 }
 
+
+
 export default function StoreProvider({children}) {
 
     const [state, dispatch] = useReducer(reducerState, initialState)
@@ -36,12 +38,24 @@ export default function StoreProvider({children}) {
 
 
 
-
     useEffect(() => checkUser(),[])
+    useEffect(() => getOrders(),[])
+
+    const [mai, setMai] = useState([])
+    useEffect(() => {
+        const da = async () => {
+            let ordersData = await getOrders()
+            setMai(ordersData)
+        }
+        da()
+    }, [])
+    console.log('mai')
+    console.log(mai)
 
     const login = async ({email: identifier, password}) => {
         try {
             const {data: {user}} = await axios.post(`${NEXT_API}/api/login`, {identifier, password})
+            router.push('/orders')
             setUser(user)
         } catch (error) {
             setError(error.response.data.message)
@@ -64,7 +78,7 @@ export default function StoreProvider({children}) {
             const {data: {user}} = await axios.get(`${NEXT_API}/api/user`)
             setUser(user)
         } catch (error) {
-            setError(error.response.data.message)
+            console.log(error)
         }
     }
     const logout = async () => {
@@ -73,7 +87,7 @@ export default function StoreProvider({children}) {
             router.push('/')
             setUser(null)
         } catch (error) {
-            setError(error.response.data.message)
+            console.log(error)
         }
     }
     const getOrders = async () => {
@@ -81,15 +95,17 @@ export default function StoreProvider({children}) {
             const {data: {data: ordersData}} = await axios.get(`${NEXT_API}/api/orders`)
             return ordersData
         } catch (err) {
-            setError(error.response.data.message)
+            console.log(err)
         }
     }
+
+
     const getToken = async () => {
         try {
             const {data: {token}} = await axios.get(`${NEXT_API}/api/check`)
             return token
         } catch (error) {
-            setError(error.response.data.message)
+            console.log(error)
         }
     }
 
@@ -108,7 +124,8 @@ export default function StoreProvider({children}) {
             state,
             dispatch,
             infoText ,
-            setInfoText
+            setInfoText,
+
         }}>
             {children}
         </StoreContext.Provider>

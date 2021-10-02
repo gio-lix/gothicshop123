@@ -6,7 +6,6 @@ import {API_URL} from "@/config/index";
 export default async (req, res) => {
     if (req.method === 'POST') {
         const {username, email, password} = req.body
-        console.log({username, email, password})
 
         try {
             const {data} = await axios.post(`${API_URL}/auth/local/register`, {username, email, password})

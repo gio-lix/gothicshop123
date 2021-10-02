@@ -9,7 +9,7 @@ import {translateCl} from "@/helper/index";
 
 export default function CategoryType({allCategory,women_clothes_type}) {
 
-    console.log(women_clothes_type)
+
     return (
         <Layout>
             <div className='w-full  min-h-screen sm:min-h-1/96 '>

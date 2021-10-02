@@ -1,6 +1,7 @@
 import axios from "axios";
 import {API_URL} from "@/config/index";
 import cookie from 'cookie'
+import {useRouter} from "next/router";
 
 export default async  (req, res) =>  {
     if (req.method === 'POST') {

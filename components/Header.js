@@ -10,17 +10,15 @@ import useWindowWidth from "@/customHook/useWindowWidth";
 import axios from "axios";
 import {API_URL} from "@/config/index";
 import OrdersMenu from "@/components/OrdersMenu";
-import Image from "next/image";
+
+
+
 
 export default function Header() {
 
     let {t} = useTranslation()
-    const {user,getToken,getOrders, logout ,error, setError,filterOrderData, setFilterOrderData} = useContext(StoreContext)
+    const {user,getToken, logout , setError,filterOrderData, setFilterOrderData} = useContext(StoreContext)
     const router = useRouter()
-
-
-
-
 
     const [loginPopUp, setLoginPopUp] = useState(false)
     const [searchResult, setSearchResult] = useState('')
@@ -28,12 +26,12 @@ export default function Header() {
     const [language, setLanguage] = useState(false)
     const [openCart, setOpenCart] = useState(false)
 
-
     const loginPageStyles = router.pathname === '/account/login'
     const registerPageStyles = router.pathname === '/account/register'
     const paymentPageStyles = router.pathname === '/paymentInfo/payment'
     const orderPath = router.pathname === '/orders'
-    const homeStyle = router.pathname === '/'
+
+    const {width, height} = useWindowWidth()
 
     const clearRef = useRef()
     const loginRef = useRef()
@@ -42,15 +40,7 @@ export default function Header() {
     const useLanguageRef = useRef()
 
 
-    const {width, height} = useWindowWidth()
 
-    useEffect(() => {
-        const da = async () => {
-            let ordersData = await getOrders()
-            setFilterOrderData(ordersData)
-        }
-        da()
-    }, [])
 
 
     useEffect(() => {
@@ -265,8 +255,6 @@ export default function Header() {
                         )}
                     </ul>
                 </nav>
-
-
             </div>
             {/*    nav bar list*/}
             <NavbarList />

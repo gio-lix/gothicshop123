@@ -11,9 +11,7 @@ export default function FilterData({products, shoes, clothes}) {
     const cd = router.pathname !== '/category/filterCategory/filterData'
     const {brand, color, size, minPrice, maxPrice} = router.query
 
-    console.log(brand)
-    console.log('brand')
-    console.log(products.map(item => item.brand.toLowerCase().replace('-', '')))
+
 
     const nums = Object.values(router.query)
     const newNumsArray = nums.filter(item => {
