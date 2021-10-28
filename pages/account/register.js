@@ -29,8 +29,8 @@ export default function RegisterPage() {
 
     return (
         <Layout title='register'>
-            <div className='w-full h-screen bg-white flex justify-center'>
-                <div className={`${!registerPageStyles && ' border h-full group'}`}>
+            <div className='w-full h-screen bg-white flex justify-center  '>
+                <div className={` ${!registerPageStyles ? 'mt-2 w-full h-full sm:px-10 ' : ' px-4   mt-6 w-72'} `}>
                     <div
                         className={`flex flex-col    ${!registerPageStyles ? 'mt-2 w-full h-full sm:px-10 ' : 'w-full  mt-10 w-72'}`}
                     >
@@ -40,7 +40,6 @@ export default function RegisterPage() {
                                     {error ? <p className={`${!registerPageStyles && 'text-xs  h-6 '}`}>{error}</p> : <p>Register</p>}
                                 </p>
                                 <form onSubmit={handleSubmit}>
-
                                     <div className={`${!registerPageStyles ? 'mt-1' : 'mt-4'}`}>
                                         <p className={`${!registerPageStyles ? 'text-white text-sm' : 'text-black'}`}>username</p>
                                         <input

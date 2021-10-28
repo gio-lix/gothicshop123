@@ -2,7 +2,8 @@ import {useRouter} from "next/router";
 import {useContext, useState} from "react";
 import {StoreContext} from "@/context/createStore";
 import useTranslation from "next-translate/useTranslation";
-
+import {motion} from "framer-motion";
+import {fadeInUp} from "../../animation";
 
 export default function LoginPopUp({setLoginPopUp}) {
     let {t} = useTranslation()
@@ -21,9 +22,9 @@ export default function LoginPopUp({setLoginPopUp}) {
 
     return (
         <>
-            <div className={`${!loginPageStyles && ' border border-gray-500 h-full group'}`}>
+            <motion.div initial="initial" variants={fadeInUp} animate='animate' className={`${!loginPageStyles && ' border border-gray-500 h-full group'}`}>
                 <div
-                    className={`flex flex-col    ${!loginPageStyles ? 'mt-2 w-full h-full sm:px-10 ' : 'w-full px-4  mt-6 w-72'}`}
+                    className={`flex flex-col    ${!loginPageStyles ? 'mt-2 w-full h-full sm:px-10 ' : 'w-full px-4   mt-6 w-72'}`}
                 >
                     {!user ? (
                         <>
@@ -85,7 +86,7 @@ export default function LoginPopUp({setLoginPopUp}) {
                         </>
                     )}
                 </div>
-            </div>
+            </motion.div>
         </>
     )
 }

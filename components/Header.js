@@ -10,14 +10,14 @@ import useWindowWidth from "@/customHook/useWindowWidth";
 import axios from "axios";
 import {API_URL} from "@/config/index";
 import OrdersMenu from "@/components/OrdersMenu";
-
-
+import {fadeInUp, fadeLeft} from "../animation";
+import {motion} from "framer-motion";
 
 
 export default function Header() {
 
     let {t} = useTranslation()
-    const {user,getToken, logout , setError,filterOrderData, setFilterOrderData} = useContext(StoreContext)
+    const {user,getToken,getOrders, logout , setError,filterOrderData, setFilterOrderData} = useContext(StoreContext)
     const router = useRouter()
 
     const [loginPopUp, setLoginPopUp] = useState(false)
@@ -87,6 +87,18 @@ export default function Header() {
         setSearchToggle(false)
     }
 
+    useEffect(() => {
+      const orderData = async () => {
+          const dataOrder = await getOrders()
+          setFilterOrderData(dataOrder)
+      }
+        orderData()
+    }, []);
+
+
+
+
+
     //delete all order by id
     const deleteAllOrdersId = async (el) => {
         const token = await getToken()
@@ -154,31 +166,26 @@ export default function Header() {
                                     <img ref={clearRef} src="/loupe.svg" alt="loupe"/>
                                 </div>
                                 {searchToggle && (
-                                    <div className=' sm:w-44 lg:w-52 h-8 absolute z-40 top-0 right-7 bg-indigo-700'>
+                                    <motion.div  initial="initial" variants={fadeLeft} animate='animate'  className=' sm:w-44 lg:w-52 h-8 absolute z-40 top-0 right-7 bg-indigo-700'>
                                         <form onSubmit={handleSearch} className='h-full'>
                                             <input ref={searchRef} type="text "
                                                    onChange={(e) => setSearchResult(e.target.value)}
                                                    className='w-full h-full text-black px-2 outline-none'/>
                                         </form>
-                                    </div>
+                                    </motion.div>
                                 )}
                             </div>
                         </li>
                         {/*change language*/}
-                        <div
-                            ref={useLanguageRef}
-                            className='mr-4 sm:mr-8 sm:text-xs relative  '
-                        >
-                            <button onClick={handleChangeLanguage}
-                                    className='p-0.5 sm:p-1.5 bg-black border border-gray-500'
-                            >
+                        <div ref={useLanguageRef}  className='mr-4 sm:mr-8 sm:text-xs relative  '  >
+                            <button onClick={handleChangeLanguage}  className='p-0.5 sm:p-1.5 bg-black border border-gray-500'  >
                                 {/*<img src="/Ellipse 13.svg" alt="ellipse " className='h-6 sm:h-7'/>*/}
                                 LN
                             </button>
                             <div
                                 className='absolute mt-2 z-50'>
                                 {language && (
-                                    <div className='flex flex-col' >
+                                    <motion.div initial="initial" variants={fadeInUp} animate='animate' className='flex flex-col' >
                                         {router.locales.map(locale => (
                                             <Link href={router.asPath} locale={locale} key={locale} >
                                                 <a  onClick={() => setLanguage(false) }
@@ -188,7 +195,7 @@ export default function Header() {
                                                 </a>
                                             </Link>
                                         ))}
-                                    </div>
+                                    </motion.div>
                                 )}
                             </div>
                         </div>
@@ -222,7 +229,7 @@ export default function Header() {
                         {user && (
                             <div ref={cartRef}>
                                 {openCart && (
-                                    <div className='absolute mt-5' >
+                                    <motion.div initial="initial" variants={fadeInUp} animate='animate' className='absolute mt-5' >
                                         <div className='w-64 h-72 absolute overflow-y-scroll scrollbar-hide z-175 bg-input mt-9 border border-gray-600 -ml-52'
                                              style={{backgroundImage: "url('/bg.png')"}}>
                                             <OrdersMenu  />
@@ -239,7 +246,7 @@ export default function Header() {
                                                      whitespace-nowrap text-sm text-gray-400 hover:text-white'
                                                 onClick={deleteAllOrders}> {t('header:deleteAll')}</button>
                                         </div>
-                                    </div>
+                                    </motion.div>
 
                                 )}
                                 {/*open cart bar*/}
